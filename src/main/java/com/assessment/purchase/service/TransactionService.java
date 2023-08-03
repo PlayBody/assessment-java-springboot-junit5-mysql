@@ -2,8 +2,6 @@ package com.assessment.purchase.service;
 
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.Month;
 import java.util.HashMap;
 import java.util.List;
@@ -26,13 +24,11 @@ public class TransactionService {
   @Autowired
   RewardPointsCalculator pointsCalculator;
   
-  public Map<Customer, Map<Month, Integer>> getCustomerPointsByMonth(LocalDate startDate, LocalDate endDate) {
+  public Map<Customer, Map<Month, Integer>> getCustomerPointsByMonth(LocalDateTime startDateTime, LocalDateTime endDateTime) {
         
     Map<Customer, Map<Month, Integer>> customerPoints = new HashMap<>();
     
-    // Get all transactions between the given dates
-    LocalDateTime startDateTime = startDate.atStartOfDay();
-    LocalDateTime endDateTime = endDate.atTime(LocalTime.MAX);    
+    // Get all transactions between the given dates   
     List<Transaction> transactions = transactionRepository.findByDateBetween(startDateTime, endDateTime);
         
     // Calculate points for each transaction        
@@ -50,6 +46,6 @@ public class TransactionService {
       monthMap.put(month, monthMap.get(month) + points);
     }
         
-    return customerPoints;
+    return points;
   }   
 }
