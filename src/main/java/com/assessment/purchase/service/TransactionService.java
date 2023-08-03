@@ -1,7 +1,7 @@
 package com.assessment.purchase.service;
 
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.HashMap;
 import java.util.List;
@@ -46,6 +46,6 @@ public class TransactionService {
       monthMap.put(month, monthMap.get(month) + points);
     }
         
-    return points;
+    return customerPoints;
   }   
 }

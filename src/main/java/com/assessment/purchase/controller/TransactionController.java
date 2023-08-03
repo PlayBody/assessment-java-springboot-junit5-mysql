@@ -1,6 +1,9 @@
 package com.assessment.purchase.controller;
 
 import java.time.LocalDateTime;
+import java.time.Month;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.assessment.purchase.model.transaction.TransactionRepository;
+import com.assessment.purchase.model.customer.Customer;
 import com.assessment.purchase.model.transaction.Transaction;
 import com.assessment.purchase.service.TransactionService;
 
@@ -23,7 +27,7 @@ public class TransactionController {
     @PostMapping
     public ResponseEntity<String> createCustomer(@RequestBody CustomerRequest customerRequest) {
         // Extract data from the request
-        String customerId = customerRequest.getCustomerId();
+        int customerId = customerRequest.getCustomerId();
         int purchasePrice = customerRequest.getPurchasePrice();
         LocalDateTime date = LocalDateTime.now();
 
@@ -44,12 +48,13 @@ public class TransactionController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createCustomer(@RequestBody TimeRangeRequest timeRangeRequest) {
+    public Map<Customer, Map<Month, Integer>> calculation(@RequestBody TimeRangeRequest timeRangeRequest) {
+        Map<Customer, Map<Month, Integer>> point= new HashMap<>();
         // Extract time from the request
         LocalDateTime startDateTime = timeRangeRequest.getStartDate();
         LocalDateTime endDateTime = timeRangeRequest.getEndDate();
         TransactionService transactionService = new TransactionService();
-        int point = transactionService.getCustomerPointsByMonth(startDateTime, endDateTime);
+        point = transactionService.getCustomerPointsByMonth(startDateTime, endDateTime);
         
         return point;
     }

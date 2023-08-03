@@ -14,7 +14,7 @@ public class Transaction {
 
   @ManyToOne      
   @JoinColumn(name = "id")
-  private Customer customerID;
+  private int customerId;
 
   private int amount;
 
@@ -38,11 +38,11 @@ public class Transaction {
     this.id = id;
   }
 
-  public String getCustomerId() {
-    return customerId();
+  public int getCustomerId() {
+    return customerId;
   }
 
-  public void setCustomerId(String customerId) {
+  public void setCustomerId(int customerId) {
     this.customerId = customerId;
   }
 
