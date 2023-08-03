@@ -98,12 +98,12 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-failsafe-plugin</artifactId>
-                    <version>3.0.0-M4</version> <!-- do not use 3.0.0.M5; there is a bug -->
+                    <version>3.9.4</version> <!-- do not use 3.0.0.M5; there is a bug -->
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.0.0-M4</version> <!-- do not use 3.0.0.M5; there is a bug -->
+                    <version>3.9.4</version> <!-- do not use 3.0.0.M5; there is a bug -->
                 </plugin>
             </plugins>
         </pluginManagement>

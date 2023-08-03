@@ -35,14 +35,14 @@ public class TransactionService {
     for (Transaction transaction : transactions) {
       int points = pointsCalculator.calculatePoints(transaction.getAmount());
 
-      Customer customer = transaction.getCustomer();
+      int customerId = transaction.getCustomerId();
       Month month = transaction.getUpdatedAt().getMonth();
       
       // Add points to customer and month
-      customerPoints.computeIfAbsent(customer, k -> new HashMap<>())
+      customerPoints.computeIfAbsent(customerId, k -> new HashMap<>())
         .computeIfAbsent(month, k -> 0);
       
-      Map<Month, Integer> monthMap = customerPoints.get(customer);
+      Map<Month, Integer> monthMap = customerPoints.get(customerId);
       monthMap.put(month, monthMap.get(month) + points);
     }
         
