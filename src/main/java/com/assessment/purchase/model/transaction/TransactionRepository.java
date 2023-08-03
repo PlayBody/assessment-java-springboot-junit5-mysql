@@ -1,6 +1,6 @@
 package com.assessment.purchase.model.transaction;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;    
@@ -11,6 +11,7 @@ public interface TransactionRepository extends CrudRepository<Transaction, Long>
 
   List<Transaction> findByUser(Customer user);
 
-List<Transaction> findByDateBetween(LocalDate startDate, LocalDate endDate);
+  @Query("SELECT t FROM Transaction t WHERE t.createdAt >= :startDate AND t.createdAt <= :endDate")
+  List<Transaction> findByDateBetween(@Param("startDate") LocalDateTime startDate, @Param("endDate") LocalDateTime endDate);
   
 }
