@@ -10,11 +10,11 @@ public class Transaction {
 
   @Id
   @GeneratedValue
-  private Long id;
+  private long id;
 
   @ManyToOne      
-  @JoinColumn(name = "id")
-  private int customerId;
+  @JoinColumn(name = "customer_id")
+  private Customer customer;
 
   private int amount;
 
@@ -38,12 +38,12 @@ public class Transaction {
     this.id = id;
   }
 
-  public int getCustomerId() {
-    return customerId;
+  public Customer getCustomer() {
+    return customer;
   }
 
-  public void setCustomerId(int customerId) {
-    this.customerId = customerId;
+  public void setCustomer(Customer customer) {
+    this.customer = customer;
   }
 
   public int getAmount() {

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.assessment.purchase.model.customer.CustomerRepository;
 import com.assessment.purchase.model.customer.Customer;
+import com.assessment.purchase.model.customer.CustomerRequest;
 
 
 @RestController
@@ -22,10 +23,9 @@ public class CustomerController {
     private CustomerRepository customerRepository;
 
     @PostMapping
-    public ResponseEntity<String> createCustomer(@RequestBody CustomerRequest customerRequest) {
+    public long createCustomer(@RequestBody CustomerRequest customerRequest) {
         // Extract data from the request
         String customerName = customerRequest.getName();
-        int purchasePrice = customerRequest.getPurchasePrice();
 
         // Create a new Customer instance
         Customer customer = new Customer();
@@ -34,7 +34,9 @@ public class CustomerController {
         // Save the Customer to the database
         customerRepository.save(customer);
 
-        return customer.getId();
+        long customerId = customer.getId();
+
+        return customerId;
     }
     
 }

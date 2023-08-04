@@ -10,11 +10,11 @@ public class Customer {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private long id;
     @Column
     private String name;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 

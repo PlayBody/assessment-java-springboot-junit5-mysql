@@ -3,7 +3,9 @@ package com.assessment.purchase.model.transaction;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;    
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;  
 
 import com.assessment.purchase.model.customer.Customer;
 
